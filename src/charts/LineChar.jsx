@@ -22,9 +22,7 @@ ChartJS.register(
 );
 
 export function LineChar(props) {
-  const arr_label = props.x_axis.split(', ');
-  const arr_data = props.y_axis.split(', ');
-  const labels = arr_label;
+  const labels = props.x_axis.replace(/[^a-zа-яё\s]/gi, '').split(' ').filter(el => el !== '');
 
   const options = {
     responsive: true,
@@ -44,7 +42,7 @@ export function LineChar(props) {
     datasets: [
       {
         label: 'Dataset 1',
-        data: arr_data,
+        data: props.y_axis.replace(/[^0-9\s]/g, '').split(' '),
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       }

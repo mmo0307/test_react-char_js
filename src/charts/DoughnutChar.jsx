@@ -6,11 +6,11 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export function DoughnutChar(props) {
   const data = {
-    labels: props.x_axis.split(', '),
+    labels: props.x_axis.replace(/[^a-zа-яё\s]/gi, '').split(' ').filter(el => el !== ''),
     datasets: [
       {
         label: '# of Votes',
-        data: props.y_axis.split(', '),
+        data: props.y_axis.replace(/[^0-9\s]/g, '').split(' '),
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',

@@ -20,7 +20,7 @@ ChartJS.register(
 );
 
 export function BarChar(props) {
-  const labels = props.x_axis.split(', ');
+  const labels = props.x_axis.replace(/[^a-zа-яё\s]/gi, '').split(' ').filter(el => el !== '');
 
   const options = {
     responsive: true,
@@ -40,7 +40,7 @@ export function BarChar(props) {
     datasets: [
       {
         label: 'Dataset 1',
-        data: props.y_axis.split(', '),
+        data: props.y_axis.replace(/[^0-9\s]/g, '').split(' '),
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       }
     ],
